@@ -14,21 +14,21 @@ const btnHold = document.querySelector('.btn--hold');
 
 
 
-scores = [0, 0];
-currentScore = 0;
-activePlayer = 0;
-
+let scores, currentScore ,activePlayer
 const reset = () => {
 
     scores = [0, 0];
     currentScore = 0;
+    // player 1 is the 1st
     activePlayer = 0;
 
     P1Score.innerText = 0;
     P1CurrentScore.innerText = 0;
     P2Score.innerText = 0;
     P2CurrentScore.innerText = 0;
-
+    
+    // for css
+    // add/remove  div the classname 
     player1.classList.add('player--active');
     player1.classList.remove('player--winner');
 
@@ -54,13 +54,13 @@ const switchPlayer = function () {
 
 btnRoll.addEventListener('click', function () {
     const dice = Math.floor(Math.random() * 6) + 1;
-
+// show image 
     diceEl.src = `dice-${dice}.png`;
 
     if (dice !== 1) {
         currentScore += dice;
         document.getElementById(`current--${activePlayer}`).innerText = currentScore;
-    } else {
+    } else {    
         switchPlayer();
     }
 
